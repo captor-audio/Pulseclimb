@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080b0d" />
+    <meta name="description" content="A clock-locked rhythm platform prototype powered by HTML5 Canvas and Pure Data." />
+    <title>Pulseclimb — Rhythm Platform Prototype</title>
+    <script type="module" crossorigin src="./assets/index-uXgCGZqE.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D0EkAThO.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <p class="eyebrow">HTML5 / PURE DATA PROTOTYPE</p>
+          <h1>PULSECLIMB</h1>
+        </div>
+
+        <div class="transport" aria-label="Master transport">
+          <div class="transport-stat">
+            <span>STEP</span>
+            <strong id="stepReadout">001</strong>
+            <small>/ 256</small>
+          </div>
+          <div class="transport-stat">
+            <span>TEMPO</span>
+            <label class="tempo-control"><input id="tempoInput" type="number" min="30" max="240" step="1" value="120" aria-label="Tempo in BPM" /></label>
+            <small>BPM</small>
+          </div>
+          <button id="audioButton" class="audio-button" type="button">
+            <span class="status-dot"></span>
+            ENABLE PD AUDIO
+          </button>
+        </div>
+      </header>
+
+      <section class="game-frame" aria-label="Rhythm platform game">
+        <canvas id="gameCanvas" tabindex="0" aria-label="Pulseclimb game canvas"></canvas>
+
+        <aside class="left-hud" aria-label="Game status">
+          <div class="hud-panel pulse-panel">
+            <span class="hud-label">NEXT JUMP PULSE</span>
+            <div class="pulse-meter"><i id="queueFill"></i></div>
+            <strong id="queueStatus">READY</strong>
+          </div>
+          <div class="hud-panel height-panel">
+            <span class="hud-label">ASCENT</span>
+            <strong><span id="heightReadout">0000</span><small>m</small></strong>
+          </div>
+        </aside>
+
+        <aside class="right-hud" aria-label="Platform legend">
+          <span class="hud-label">PLATFORM PHASES</span>
+          <div><i class="legend-slow"></i><span>SLOW</span><small>6 · 2</small></div>
+          <div><i class="legend-medium"></i><span>MED</span><small>3 · 1</small></div>
+          <div><i class="legend-fast"></i><span>FAST</span><small>1.5 · .5</small></div>
+        </aside>
+
+        <aside class="pd-monitor" aria-label="Pure Data output monitor">
+          <span class="hud-label">PD OUTPUT · LATEST CALLS</span>
+          <ol id="pdMonitor"></ol>
+        </aside>
+
+        <div id="introCard" class="intro-card">
+          <p class="eyebrow">CLOCK-LOCKED ASCENT</p>
+          <h2>Move freely.<br />Jump on the pulse.</h2>
+          <div class="controls">
+            <span><kbd>A</kbd><kbd>←</kbd> LEFT</span>
+            <span><kbd>D</kbd><kbd>→</kbd> RIGHT</span>
+            <span><kbd>SPACE</kbd> QUEUE JUMP</span>
+            <span><kbd>S</kbd> SWITCH</span>
+          </div>
+          <button id="startButton" type="button">ENTER THE LOOP <span>↗</span></button>
+        </div>
+
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      </section>
+
+      <footer class="footerbar">
+        <span><i class="live-dot"></i> GAME CLOCK IS MASTER</span>
+        <span id="pdStatus">PD BRIDGE · MONITORING</span>
+        <span>A / D + SPACE / S</span>
+      </footer>
+    </main>
+
+  </body>
+</html>
